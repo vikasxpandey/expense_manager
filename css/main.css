@@ -1,0 +1,33 @@
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Rubik', sans-serif;
+overflow-x: hidden;
+    
+}
+
+a {
+text-decoration: none;
+color: #000;
+}
+
+.header {
+background: #f6f4f1;
+height: 10vh;
+display:flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;   
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+    line-height: 2rem;
+}
