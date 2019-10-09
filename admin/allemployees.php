@@ -103,7 +103,7 @@ if(isset($_POST['submit']))
 </tr>
 
 <?php
-$ret=mysqli_query($con,"select * from employeedetail");
+$ret=mysqli_query($con,"select * from studetail");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 

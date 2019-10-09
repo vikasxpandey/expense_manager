@@ -7,10 +7,11 @@ if(isset($_POST['login']))
   {
     $Email=$_POST['Email'];
     $Password=$_POST['Password'];
-    $query=mysqli_query($con,"select ID from employeedetail where  EmpEmail='$Email' && EmpPassword='$Password' ");
+    $query=mysqli_query($con,"select ID,EmpCode from studetail where  EmpEmail='$Email' && EmpPassword='$Password' ");
     $ret=mysqli_fetch_array($query);
     if($ret>0){
       $_SESSION['uid']=$ret['ID'];
+      $_SESSION['empcode']=$ret['EmpCode'];
      header('location:welcome.php');
     }
     else{

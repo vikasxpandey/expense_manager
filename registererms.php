@@ -9,13 +9,13 @@ if(isset($_POST['submit']))
     $Email=$_POST['Email'];
     $Password=$_POST['Password'];
     //$RPassword=$_POST['RepeatPassword'];
-    $ret=mysqli_query($con, "select EmpEmail from employeedetail where EmpEmail='$Email'");
+    $ret=mysqli_query($con, "select EmpEmail from studetail where EmpEmail='$Email'");
     $result=mysqli_fetch_array($ret);
     if($result>0){
 $msg="This email already associated with another account";
     }
     else{
-    $query=mysqli_query($con, "insert into employeedetail(EmpFname, EmpLName, EmpCode, EmpEmail,  EmpPassword) value('$FName', '$LName', '$empcode', '$Email', '$Password' )");
+    $query=mysqli_query($con, "insert into studetail(EmpFname, EmpLName, EmpCode, EmpEmail,  EmpPassword) value('$FName', '$LName', '$empcode', '$Email', '$Password' )");
     if ($query) {
     $msg="You have successfully registered";
   }

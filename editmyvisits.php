@@ -1,32 +1,24 @@
 <?php
 session_start();
-error_reporting(0);
+// error_reporting(0);
 include('includes/dbconnection.php');
 //error_reporting(0);
+// echo '<script>alert('.$_SESSION['empcode'].$_SESSION['uid'].');</script>';
 if (strlen($_SESSION['uid']==0)) {
   header('location:logout.php');
   } else{
 
+if(isset($_POST['add_clg']))
+  {  
+    $empcode = $_SESSION['empcode'];
+    $clg = $_POST['college_visited'];
+    $date = $_POST['date'];
+    $addr = $_POST['address'];
+    $faculty = $_POST['assisting_faculty'];
 
-if(isset($_POST['submit']))
-  {
-    $eid=$_SESSION['uid'];
-    $emp1name=$_POST['emp1name'];
-    $emp1des=$_POST['emp1des'];
-    $emp1ctc=$_POST['emp1ctc'];
-    $emp1wd=$_POST['emp1workduration'];
-    $emp2name=$_POST['emp2name'];
-    $emp2des=$_POST['emp2des'];
-    $emp2ctc=$_POST['emp2ctc'];
-    $emp2wd=$_POST['emp2workduration'];
-    $emp3name=$_POST['emp3name'];
-    $emp3des=$_POST['emp3des'];
-    $emp3ctc=$_POST['emp3ctc'];
-    $emp3wd=$_POST['emp3workduration'];
-    
-     $query=mysqli_query($con, "update empexpireince set Employer1Name='$emp1name',  Employer1Designation ='$emp1des', Employer1CTC ='$emp1ctc', Employer1WorkDuration='$emp1wd', Employer2Name='$emp2name',  Employer2Designation ='$emp2des', Employer2CTC ='$emp2ctc', Employer2WorkDuration='$emp2wd', Employer3Name='$emp3name',  Employer3Designation ='$emp3des', Employer3CTC ='$emp3ctc', Employer3WorkDuration='$emp3wd'  where EmpID='$eid'");
+    $query=mysqli_query($con, "INSERT INTO visits(empcode, college_visited, date, address, assisting_faculty) VALUES ('$empcode','$clg','$date','$addr','$faculty');");
     if ($query) {
-    $msg="Your Expirence has been updated.";
+    $msg="Your Visit has been updated.";
   }
   else
     {
@@ -83,18 +75,23 @@ if(isset($_POST['submit']))
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">Add Visits</h1>
           <div class="form-wrap">
-          <form action="editmyvisits.php">
+          <?php echo $msg;?>
+          <form action="editmyvisits.php" method="post">
           <div class="form-group">
             <label for="college_visited">College Name</label>
-            <input type="text" name="college_visited" class="form-control form-control-user">
+            <input type="text" name="college_visited" class="form-control form-control-user" required>
+          </div>
+          <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" name="date" class="form-control form-control-user" required>
           </div>
           <div class="form-group">
             <label for="address">College Address</label>
-            <input type="text" name="address" class="form-control form-control-user">
+            <textarea class="form-control form-control-user" rows="5" name="address" required></textarea>
           </div>
           <div class="form-group">
             <label for="assisting_faculty">Assisting Faculty</label>
-            <input type="text" name="assisting_faculty" class="form-control form-control-user">
+            <input type="text" name="assisting_faculty" class="form-control form-control-user" required>
           </div>
           <button type="submit" name="add_clg" class="btn btn-primary">Add Visit</button>
           </form>
