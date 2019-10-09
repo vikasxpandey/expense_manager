@@ -95,7 +95,7 @@ if($rowno>0){
     <li class="list-group-item">Total Expenses:</li>
   </ul>
   <div class="card-body">
-    <a href="#" class="card-link">Edit Visit</a>
+    <a href="editexps.php?v=<?php echo $row['id'];?>" class="card-link">Edit Visit</a>
     <a href="#" class="card-link" style="color: red;" >Delete Visit</a>
   </div>
 </div>

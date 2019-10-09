@@ -1,6 +1,22 @@
+a {
+    text-decoration: none !important;
+}
+
 .form-wrap{
     width: 60%;
 }
 
 .card.shadow { transition: all .3s ease-in-out; }
 .card.shadow:hover { transform: scale(1.05); }
+
+.exp-show button:hover {
+    text-decoration: none;
+}
+
+.proof-img {
+    max-height: 10rem;
+}
+
+.view-btn {
+    float: right;
+}
