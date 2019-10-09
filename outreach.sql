@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2019 at 08:25 PM
+-- Generation Time: Oct 09, 2019 at 10:38 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -99,6 +99,30 @@ INSERT INTO `empexpireince` (`ID`, `EmpID`, `Employer1Name`, `Employer1Designati
 (11, '13', 'ABC', 'Developer', '12000 ', '2 years', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA'),
 (12, '1', '', '', '', '', '', '', '', '', '', '', '', ''),
 (13, '14', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `expenses`
+--
+
+CREATE TABLE `expenses` (
+  `id` int(100) NOT NULL,
+  `visit_id` int(100) NOT NULL,
+  `expense` varchar(255) NOT NULL,
+  `amount` int(100) NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `expenses`
+--
+
+INSERT INTO `expenses` (`id`, `visit_id`, `expense`, `amount`, `image`) VALUES
+(10, 10, 'Train', 22, '1570651006.png'),
+(11, 9, 'Bus', 20, '1570653182.jpeg'),
+(12, 9, 'Train', 15, '1570653198.jpeg'),
+(13, 9, 'Food', 250, '1570653304.jpeg');
 
 -- --------------------------------------------------------
 
@@ -201,6 +225,12 @@ ALTER TABLE `empexpireince`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `expenses`
+--
+ALTER TABLE `expenses`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `studetail`
 --
 ALTER TABLE `studetail`
@@ -234,6 +264,12 @@ ALTER TABLE `empeducation`
 --
 ALTER TABLE `empexpireince`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `expenses`
+--
+ALTER TABLE `expenses`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `studetail`
