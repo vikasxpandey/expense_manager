@@ -1,30 +1,17 @@
 <?php
 session_start();
-error_reporting(0);
+// error_reporting(0);
 include('includes/dbconnection.php');
 //error_reporting(0);
 if (strlen($_SESSION['uid']==0)) {
   header('location:logout.php');
   } else{
 
+$msg = '';
 
 if(isset($_POST['submit']))
   {
-    $eid=$_SESSION['uid'];
-    $emp1name=$_POST['emp1name'];
-    $emp1des=$_POST['emp1des'];
-    $emp1ctc=$_POST['emp1ctc'];
-    $emp1wd=$_POST['emp1workduration'];
-    $emp2name=$_POST['emp2name'];
-    $emp2des=$_POST['emp2des'];
-    $emp2ctc=$_POST['emp2ctc'];
-    $emp2wd=$_POST['emp2workduration'];
-    $emp3name=$_POST['emp3name'];
-    $emp3des=$_POST['emp3des'];
-    $emp3ctc=$_POST['emp3ctc'];
-    $emp3wd=$_POST['emp3workduration'];
-    
-     $query=mysqli_query($con, "insert into empexpireince ( EmpID,Employer1Name, Employer1Designation, Employer1CTC,  Employer1WorkDuration, Employer2Name,  Employer2Designation, Employer2CTC, Employer2WorkDuration, Employer3Name, Employer3Designation, Employer3CTC, Employer3WorkDuration) value('$eid','$emp1name', '$emp1des', '$emp1ctc', '$emp1wd', '$emp2name', '$emp2des', '$emp2ctc', '$emp2wd', '$emp3name', '$emp3des', '$emp3ctc', '$emp3wd' )");
+    $query=mysqli_query($con,"select * from studetail where  EmpEmail='$Email' && EmpPassword='$Password' ");
     if ($query) {
     $msg="Your Expirence data has been submitted succeesfully.";
   }
@@ -81,39 +68,27 @@ if(isset($_POST['submit']))
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">My Experience</h1>
+          <h1 class="h3 mb-4 text-gray-800">My Visits</h1>
 
 <p style="font-size:16px; color:red" align="center"> <?php if($msg){
     echo $msg;
   }  ?> </p>
 
   <?php 
-$empid=$_SESSION['uid'];
-$query=mysqli_query($con,"select * from visits where EmpID=$empid");
-$row=mysqli_fetch_array($query);
-if($row>0)
-{
-
-?>
-<p style="font-size:16px; color:red" align="center">Your Experience details already added. Now you can only edit the record. </p>
-<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-
-
-<!-- IF CREATED THEN CODE -->
-
-
-<?php } else {?>
-
-<form class="user" method="post" action="">
+$empcode=$_SESSION['empcode'];
+$query=mysqli_query($con,"select * from visits where empcode=$empcode");
+$rowno=mysqli_num_rows($query);
+if($rowno>0){ 
+  while($row = mysqli_fetch_array($query)) {?>
+<div>
+<h1><?php echo $row['address'];?></h1>
+</div>
+  <?php }
+} else {?>
  
  <h2>No Records Found</h2>
-                  
-                  </form>
 
 <?php } ?> 
-
-
-
 
 
         </div>

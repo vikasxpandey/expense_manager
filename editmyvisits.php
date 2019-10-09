@@ -4,6 +4,7 @@ session_start();
 include('includes/dbconnection.php');
 //error_reporting(0);
 // echo '<script>alert('.$_SESSION['empcode'].$_SESSION['uid'].');</script>';
+$msg='';
 if (strlen($_SESSION['uid']==0)) {
   header('location:logout.php');
   } else{
