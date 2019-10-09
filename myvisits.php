@@ -74,16 +74,37 @@ if(isset($_POST['submit']))
     echo $msg;
   }  ?> </p>
 
+<div class="row">
   <?php 
 $empcode=$_SESSION['empcode'];
 $query=mysqli_query($con,"select * from visits where empcode=$empcode");
 $rowno=mysqli_num_rows($query);
 if($rowno>0){ 
   while($row = mysqli_fetch_array($query)) {?>
-<div>
-<h1><?php echo $row['address'];?></h1>
+  <!-- CARD BEGINS -->
+
+<div class="col-md-3">
+<div class="card shadow">
+  <div class="card-body">
+    <h5 class="card-title"><?php echo $row['college_visited'];?></h5>
+    <p class="card-text"><?php echo $row['address'];?></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><?php echo $row['date'];?></li>
+    <li class="list-group-item"><?php echo $row['assisting_faculty'];?></li>
+    <li class="list-group-item">Total Expenses:</li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Edit Visit</a>
+    <a href="#" class="card-link" style="color: red;" >Delete Visit</a>
+  </div>
 </div>
-  <?php }
+</div>
+
+<!-- CARD ENDS -->
+<?php }?>
+</div>  
+<?php
 } else {?>
  
  <h2>No Records Found</h2>
