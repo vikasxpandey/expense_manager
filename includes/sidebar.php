@@ -41,7 +41,7 @@
        <li class="nav-item">
         <a class="nav-link" href="editmyvisits.php">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>Edit My Visits</span></a>
+          <span>Add Visits</span></a>
       </li>
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

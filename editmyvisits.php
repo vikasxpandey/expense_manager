@@ -46,7 +46,7 @@ if(isset($_POST['submit']))
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Edit My Expirence</title>
+  <title>Add Visits</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -54,6 +54,7 @@ if(isset($_POST['submit']))
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
 
 </head>
 
@@ -80,108 +81,25 @@ if(isset($_POST['submit']))
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Edit My Experience</h1>
-
-<p style="font-size:16px; color:red" align="center"> <?php if($msg){
-    echo $msg;
-  }  ?> </p>
-
-<form class="user" method="post" action="">
-  <?php
- $empid=$_SESSION['uid'];
-$ret=mysqli_query($con,"select * from empexpireince where EmpID='$empid'");
-$num=mysqli_num_rows($ret);
-if($num>0){
-$cnt=1;
-while ($row=mysqli_fetch_array($ret)) {
-
-?>
-               <div class="row">
-                <div class="col-4 mb-3">Employer1 Name</div>
-                   <div class="col-8 mb-3">   <input type="text" class="form-control form-control-user" id="emp1name" name="emp1name" aria-describedby="emailHelp" value="<?php  echo $row['Employer1Name'];?>"></div>
-                    </div>  
-                    <div class="row">
-                      <div class="col-4 mb-3">Employer1 Designation </div>
-                     <div class="col-8 mb-3">  <input type="text" class="form-control form-control-user" id="emp1des" name="emp1des" aria-describedby="emailHelp" value="<?php  echo $row['Employer1Designation'];?>"></div>  
-                     </div>
-
-
-
-                    <div class="row">
-                    <div class="col-4 mb-3">Employer1 CTC </div>
-                    <div class="col-8 mb-3">
-                      <input type="text" class="form-control form-control-user" id="emp1ctc" name="emp1ctc" aria-describedby="emailHelp" value="<?php  echo $row['Employer1CTC'];?>"></div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-4 mb-3">Employer1 WorkDuration</div>
-                     <div class="col-8 mb-3">
-                      <input type="text" class="form-control form-control-user" id="emp1workduration" name="emp1workduration" aria-describedby="emailHelp" value="<?php  echo $row['Employer1WorkDuration'];?>">
-                    </div></div>
-                    <div class="row">
-                <div class="col-4 mb-3">Employer2 Name</div>
-                   <div class="col-8 mb-3">   <input type="text" class="form-control form-control-user" id="emp2name" name="emp2name" aria-describedby="emailHelp" value="<?php  echo $row['Employer2Name'];?>"></div>
-                    </div>  
-                    <div class="row">
-                      <div class="col-4 mb-3">Employer2 Designation </div>
-                     <div class="col-8 mb-3">  <input type="text" class="form-control form-control-user" id="emp2des" name="emp2des" aria-describedby="emailHelp" value="<?php  echo $row['Employer2Designation'];?>"></div>  
-                     </div>
-
-
-
-                    <div class="row">
-                    <div class="col-4 mb-3">Employer2 CTC </div>
-                    <div class="col-8 mb-3">
-                      <input type="text" class="form-control form-control-user" id="emp2ctc" name="emp2ctc" aria-describedby="emailHelp" value="<?php  echo $row['Employer2CTC'];?>"></div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-4 mb-3">Employer2 WorkDuration</div>
-                     <div class="col-8 mb-3">
-                      <input type="text" class="form-control form-control-user" id="emp2workduration" name="emp2workduration" aria-describedby="emailHelp" value="<?php  echo $row['Employer2WorkDuration'];?>">
-                    </div></div>
-                    <div class="row">
-                <div class="col-4 mb-3">Employer3 Name</div>
-                   <div class="col-8 mb-3">   <input type="text" class="form-control form-control-user" id="emp3name" name="emp3name" aria-describedby="emailHelp" value="<?php  echo $row['Employer3Name'];?>"></div>
-                    </div>  
-                    <div class="row">
-                      <div class="col-4 mb-3">Employer3 Designation </div>
-                     <div class="col-8 mb-3">  <input type="text" class="form-control form-control-user" id="emp3des" name="emp3des" aria-describedby="emailHelp" value="<?php  echo $row['Employer3Designation'];?>"></div>  
-                     </div>
-
-
-
-                    <div class="row">
-                    <div class="col-4 mb-3">Employer3 CTC </div>
-                    <div class="col-8 mb-3">
-                      <input type="text" class="form-control form-control-user" id="emp3ctc" name="emp3ctc" aria-describedby="emailHelp" value="<?php  echo $row['Employer3CTC'];?>"></div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-4 mb-3">Employer3 WorkDuration</div>
-                     <div class="col-8 mb-3">
-                      <input type="text" class="form-control form-control-user" id="emp3workduration" name="emp3workduration" aria-describedby="emailHelp" value="<?php  echo $row['Employer3WorkDuration'];?>">
-                    </div></div>
-<?php } ?>
-                    <div class="row" style="margin-top:4%">
-                      <div class="col-4"></div>
-                      <div class="col-4">
-                      <input type="submit" name="submit"  value="Update" class="btn btn-primary btn-user btn-block">
-                    </div>
-                    </div>
-                  
-                  </form>
-
-
-<?php } else {?>
-
-  <div class="row" style="margin-top:4%">
-                      <div class="col-12" style="font-size:18px; color:red;">First Add your experience details after that you can edit experience details.</div>
-                   
-                    </div>
-<?php } ?>
-
-
+          <h1 class="h3 mb-4 text-gray-800">Add Visits</h1>
+          <div class="form-wrap">
+          <form action="editmyvisits.php">
+          <div class="form-group">
+            <label for="college_visited">College Name</label>
+            <input type="text" name="college_visited" class="form-control form-control-user">
+          </div>
+          <div class="form-group">
+            <label for="address">College Address</label>
+            <input type="text" name="address" class="form-control form-control-user">
+          </div>
+          <div class="form-group">
+            <label for="assisting_faculty">Assisting Faculty</label>
+            <input type="text" name="assisting_faculty" class="form-control form-control-user">
+          </div>
+          <button type="submit" name="add_clg" class="btn btn-primary">Add Visit</button>
+          </form>
+          </div>
+      
         </div>
         <!-- /.container-fluid -->
 

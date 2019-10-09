@@ -34,7 +34,7 @@ session_destroy();
   <meta name="description" content="Employee Record management System in php and mysql">
   <meta name="author" content="Sarita Pandey">
 
-  <title>ERMS Employee Reset</title>
+  <title>Student Reset Password</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -55,13 +55,13 @@ return true;
 } 
 
 </script>
-
+<link href="css/custom.css" rel="stylesheet">
 </head>
 
 <body class="bg-gradient-primary">
 
   <div class="container">
-    <h3 align="center" style="color: black; padding-top: 2%">Employee Record Managment System</h3>
+    <h3 align="center" style="color: black; padding-top: 2%">Outreach Managment System</h3>
 
     <!-- Outer Row -->
     <div class="row justify-content-center">

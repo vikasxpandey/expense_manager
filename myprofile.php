@@ -50,6 +50,7 @@ if(isset($_POST['submit']))
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
 
 </head>
 

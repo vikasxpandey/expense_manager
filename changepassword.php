@@ -59,6 +59,7 @@ return true;
 }	
 
 </script>
+<link href="css/custom.css" rel="stylesheet">
 </head>
 
 <body id="page-top">

@@ -30,11 +30,8 @@ if(isset($_POST['submit']))
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="Employee Record management System in php and mysql">
-  <meta name="description" content="Employee Record management System in php and mysql">
-  <meta name="author" content="Sarita Pandey">
 
-  <title>ERMS | Forgot Password</title>
+  <title>Outreach Management | Forgot Password</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -42,13 +39,14 @@ if(isset($_POST['submit']))
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
 
 </head>
 
 <body class="bg-gradient-primary">
 
   <div class="container">
-    <h3 align="center" style="color: black; padding-top: 2%">Employee Record Managment System</h3>
+    <h3 align="center" style="color: black; padding-top: 2%">Outreach Managment System</h3>
 
 
     <!-- Outer Row -->
