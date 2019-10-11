@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2019 at 10:38 PM
+-- Generation Time: Oct 11, 2019 at 06:16 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -120,9 +120,10 @@ CREATE TABLE `expenses` (
 
 INSERT INTO `expenses` (`id`, `visit_id`, `expense`, `amount`, `image`) VALUES
 (10, 10, 'Train', 22, '1570651006.png'),
-(11, 9, 'Bus', 20, '1570653182.jpeg'),
-(12, 9, 'Train', 15, '1570653198.jpeg'),
-(13, 9, 'Food', 250, '1570653304.jpeg');
+(15, 10, 'Bus', 40, '1570702246.png'),
+(16, 11, 'Food', 140, '1570809056.jpeg'),
+(17, 0, 'Train', 10, '1570810287.png'),
+(19, 9, 'Train', 28, '1570810426.jpeg');
 
 -- --------------------------------------------------------
 
@@ -162,7 +163,7 @@ INSERT INTO `studetail` (`ID`, `EmpFname`, `EmpLName`, `EmpCode`, `EmpDept`, `Em
 (11, 'SARITA', 'pANDEY', '789', NULL, NULL, NULL, NULL, 'PANDEY@GMAIL.COM', '1111', NULL, '2019-02-11 08:50:55'),
 (12, 'Dinesh', 'Karthik', '56989', NULL, NULL, NULL, NULL, 'dinesh@gmail.com', '8989', NULL, '2019-02-11 12:30:50'),
 (13, 'Test', 'User', '2131231', 'IT', 'Software Developer', 1234567890, 'Male', 'testuser@gmail.com', 'Test@123', '2018-10-09', '2019-02-11 16:21:58'),
-(14, 'John', 'Doe', '445566', NULL, NULL, NULL, NULL, 'johndoe@mail.com', 'johndoe', NULL, '2019-10-09 08:40:18');
+(14, 'Harsh', 'Raval', '445566', NULL, NULL, NULL, NULL, 'johndoe@mail.com', 'johndoe', NULL, '2019-10-09 08:40:18');
 
 -- --------------------------------------------------------
 
@@ -206,7 +207,7 @@ CREATE TABLE `visits` (
 
 INSERT INTO `visits` (`id`, `empcode`, `college_visited`, `date`, `address`, `assisting_faculty`) VALUES
 (9, 445566, 'Universal College of Engineering', '2019-10-16', 'Kaman-Bhiwandi Road, Kaman, Vasai East', 'Chinmay Parab'),
-(10, 445566, 'IIT Bombay', '2019-10-04', 'Powai, Near Powai Lake, Navi Mumbai', 'Vikas Pandey');
+(11, 445566, 'Thadomal Sahani Engineering College', '2019-10-25', 'Lorem Nagar, Near Ipsum, Bandra West', 'Raj Shah');
 
 --
 -- Indexes for dumped tables
@@ -269,7 +270,7 @@ ALTER TABLE `empexpireince`
 -- AUTO_INCREMENT for table `expenses`
 --
 ALTER TABLE `expenses`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `studetail`
@@ -287,7 +288,7 @@ ALTER TABLE `tbladmin`
 -- AUTO_INCREMENT for table `visits`
 --
 ALTER TABLE `visits`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
