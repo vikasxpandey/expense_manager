@@ -89,7 +89,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <a href="admin/">
+                        <a href="">
                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Admin Login</div>
                    </a>
                     </div>

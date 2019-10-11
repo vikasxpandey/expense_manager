@@ -9,6 +9,15 @@ if (strlen($_SESSION['uid']==0)) {
   header('location:logout.php');
   } else{
 
+if(isset($_GET['d'])){
+  $delid = $_GET['del'];
+  $query=mysqli_query($con,"delete from expenses where id=$delid ");
+  if ($query) {
+    echo "<script>alert('Expense Deleted');</script>";
+
+  }
+}  
+
 if(isset($_POST['add_exp']) && !empty($_FILES["file"]["name"]))
   {  
     // FILE BEGIN
@@ -130,6 +139,7 @@ if(isset($_POST['add_exp']) && !empty($_FILES["file"]["name"]))
                                 <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 <?php echo $show_exp['expense'].' - '.$show_exp['amount']; ?>
                                 </button>
+                                <a href="editexps.php?v=<?php echo $show_exp['visit_id'];?>&d=true&del=<?php echo $show_exp['id']?>" style="color:red;" class="btn btn-default view-btn" >x</a>
                             </h5>
                             </div>
 

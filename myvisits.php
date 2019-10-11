@@ -20,6 +20,15 @@ if(isset($_POST['submit']))
       $msg="Something Went Wrong. Please try again.";
     }
   }
+
+  if(isset($_GET['d'])){
+    $delid = $_GET['del'];
+    $query=mysqli_query($con,"delete from visits where id=$delid ");
+    if ($query) {
+      echo "<script>alert('Visit Deleted'); window.location.href='myvisits.php';</script>";
+
+    }
+  }
   ?>
 
 <!DOCTYPE html>
@@ -96,9 +105,10 @@ if($rowno>0){
   </ul>
   <div class="card-body">
     <a href="editexps.php?v=<?php echo $row['id'];?>" class="card-link">Edit Visit</a>
-    <a href="#" class="card-link" style="color: red;" >Delete Visit</a>
+    <a href="myvisits.php?d=true&del=<?php echo $row['id'];?>" class="card-link" style="color: red;" >Delete Visit</a>
   </div>
 </div>
+<br>
 </div>
 
 <!-- CARD ENDS -->
