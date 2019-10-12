@@ -146,7 +146,7 @@ if(isset($_POST['add_exp']) && !empty($_FILES["file"]["name"]))
                             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
                                 <img class="proof-img" src="uploads/<?php echo $show_exp['image'];?>" alt="">
-                                <a href="uploads/<?php echo $show_exp['image'];?>" class="btn btn-default view-btn" >View</a>
+                                <a href="uploads/<?php echo $show_exp['image'];?>" target="_blank" class="btn btn-default view-btn" >View</a>
                             </div>
                             </div>
                         </div>

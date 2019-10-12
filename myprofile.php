@@ -20,9 +20,9 @@ if(isset($_POST['submit']))
     $EmpContactNo=$_POST['EmpContactNo'];
     $gender=$_POST['gender'];
     $empjdate=$_POST['EmpJoingdate'];
-     $query=mysqli_query($con, "update studetail set EmpFname='$FName',  EmpLName='$LName', EmpCode='$empcode', EmpDept='$EmpDept', EmpDesignation='$EmpDesignation', EmpContactNo='$EmpContactNo', EmpGender='$gender',EmpJoingdate='$empjdate' where ID='$eid'");
+     $query=mysqli_query($con, "update studetail set EmpFname='$FName',  EmpLName='$LName', EmpCode='$empcode', EmpDept='$EmpDept', EmpDesignation='$EmpDesignation', EmpContactNo='$EmpContactNo' where ID='$eid'");
     if ($query) {
-    $msg="Your profile has been updated.";
+    $msg="<p style='color:green;'>Your profile has been updated.</p>";
   }
   else
     {
@@ -103,24 +103,24 @@ while ($row=mysqli_fetch_array($ret)) {
 
 
                     <div class="row">
-                    <div class="col-4 mb-3">Employee Code </div>
+                    <div class="col-4 mb-3">Student Code </div>
                     <div class="col-8 mb-3">
                       <input type="text" class="form-control form-control-user" id="EmpCode" name="EmpCode" aria-describedby="emailHelp" required="true" value="<?php  echo $row['EmpCode'];?>"></div>
                     </div>
 
                     <div class="row">
-                      <div class="col-4 mb-3">Employee Dept</div>
+                      <div class="col-4 mb-3">Department</div>
                      <div class="col-8 mb-3">
                       <input type="text" class="form-control form-control-user" id="EmpDept" name="EmpDept" aria-describedby="emailHelp" required="true" value="<?php  echo $row['EmpDept'];?>">
                     </div></div>
                     <div class="row">
-                    <div class="col-4 mb-3">Employee Desigantion</div>
+                    <div class="col-4 mb-3">Designation</div>
 
                     <div class="col-8 mb-3">
                       <input type="text" class="form-control form-control-user" id="EmpDesignation" name="EmpDesignation" aria-describedby="emailHelp" required="true" value="<?php  echo $row['EmpDesignation'];?>">
                     </div></div>
                     <div class="row">
-                      <div class="col-4 mb-3">Employee Contact No.</div>
+                      <div class="col-4 mb-3">Contact No.</div>
                     <div class="col-8 mb-3">
                       <input type="text" class="form-control form-control-user" id="EmpContactNo" name="EmpContactNo" aria-describedby="emailHelp" required="true" value="<?php  echo $row['EmpContactNo'];?>">
                     </div></div>
@@ -128,26 +128,6 @@ while ($row=mysqli_fetch_array($ret)) {
                     <div class="col-4 mb-3">Email</div>
                    <div class="col-8 mb-3">
                       <input type="email" class="form-control form-control-user" id="Email" name="Email" aria-describedby="emailHelp" placeholder="Enter Email Address..." required="true" value="<?php  echo $row['EmpEmail'];?>" readonly="true">
-                    </div></div>
-                
-                    <div class="row">
-                      <div class="col-4 mb-3">Employee Joing Date(yyyy-mm-dd)</div>
-                    <div class="col-8  mb-3">
-                      <input type="text" class="form-control form-control-user" value="<?php  echo $row['EmpJoingdate'];?>" id="jDate" name="EmpJoingdate" aria-describedby="emailHelp">
-                    </div></div>
-                    <div class="row">
-                      <div class="col-4 mb-3">Gender</div>
-                    <div class="col-4 mb-3">
-                    
-<?php if($row['EmpGender']=="Male")
-{?>
-                      <input type="radio" id="gender" name="gender" value="Male" checked="true">Male
-
-                     <input type="radio" name="gender" value="Female">Female
-                   <?php }   if($row['EmpGender']=="Female") {?>
- <input type="radio" id="gender" name="gender" value="Male" >Male
-  <input type="radio" name="gender" value="Female" checked="true">Female
-                   <?php }?>
                     </div></div>
 <?php } ?>
                     <div class="row" style="margin-top:4%">
