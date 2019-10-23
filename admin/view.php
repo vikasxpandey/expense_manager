@@ -1,33 +1,54 @@
 <?php
 session_start();
-// error_reporting(0);
+error_reporting(0);
 include('includes/dbconnection.php');
 //error_reporting(0);
-if (strlen($_SESSION['uid']==0)) {
+if (strlen($_SESSION['aid']==0)) {
   header('location:logout.php');
   } else{
 
-$msg = '';
-
+    if(isset($_POST['submit']))
+    {
+    $eid=$_GET['e'];
+      $query=mysqli_query($con,"select * from studetail where ID='$eid'' ");
+      if ($query) {
+      $msg="Your Expirence data has been submitted succeesfully.";
+    }
+    else
+      {
+        $msg="Something Went Wrong. Please try again.";
+      }
+    }
+  
 if(isset($_POST['submit']))
   {
-    $query=mysqli_query($con,"select * from studetail where  EmpEmail='$Email' && EmpPassword='$Password' ");
+    $eid=$_GET['e'];
+      $coursepg=$_POST['coursepg'];
+    $schoolclgpg=$_POST['schoolclgpg'];
+    $yoppg=$_POST['yoppg'];
+    $pipg=$_POST['pipg'];
+    $coursegra=$_POST['coursegra'];
+    $schoolclggra=$_POST['schoolclggra'];
+    $yopgra=$_POST['yopgra'];
+    $pigra=$_POST['pigra'];
+    $coursessc=$_POST['coursessc'];
+    $schoolclgssc=$_POST['schoolclgssc'];
+    $yopssc=$_POST['yopssc'];
+    $pissc=$_POST['pissc'];
+    $coursehsc=$_POST['coursehsc'];
+    $schoolclghsc=$_POST['schoolclghsc'];
+    $yophsc=$_POST['yophsc'];
+    $pihsc=$_POST['pihsc'];
+    
+     $query=mysqli_query($con, "update empeducation set CoursePG='$coursepg', SchoolCollegePG='$schoolclgpg', YearPassingPG='$yoppg',  PercentagePG= '$pipg', CourseGra='$coursegra',  SchoolCollegeGra='$schoolclggra', YearPassingGra= '$yopgra', PercentageGra='$pigra', CourseSSC='$coursessc', SchoolCollegeSSC='$schoolclgssc', YearPassingSSC= '$yopssc', PercentageSSC= '$pissc', CourseHSC='$coursehsc', SchoolCollegeHSC='$schoolclghsc', YearPassingHSC='$yophsc', PercentageHSC='$pihsc' where ID='$eid'");
     if ($query) {
-    $msg="Your Expirence data has been submitted succeesfully.";
+    $msg="Employee Education data has been updated succeesfully.";
   }
   else
     {
       $msg="Something Went Wrong. Please try again.";
     }
   }
-  if(isset($_GET['d'])){
-    $delid = $_GET['del'];
-    $query=mysqli_query($con,"delete from visits where id=$delid ");
-    if ($query) {
-      echo "<script>alert('Visit Deleted'); window.location.href='myvisits.php';</script>";
-    }
-  }
-
   ?>
 
 <!DOCTYPE html>
@@ -41,16 +62,15 @@ if(isset($_POST['submit']))
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>My Visits</title>
+  <title>Visits</title>
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
-  <link href="css/custom.css" rel="stylesheet">
-
+  <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="../css/custom.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -76,7 +96,7 @@ if(isset($_POST['submit']))
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">My Visits</h1>
+          <h1 class="h3 mb-4 text-gray-800">Visits</h1>
 
 <p style="font-size:16px; color:red" align="center"> <?php if($msg){
     echo $msg;
@@ -84,13 +104,15 @@ if(isset($_POST['submit']))
 
 <div class="row">
   <?php 
-$empcode=$_SESSION['empcode'];
-$query=mysqli_query($con,"select * from visits where empcode=$empcode");
+    $eid=$_GET['e'];
+    $ret=$_GET['c'];
+    //$ret=mysqli_query($con,"select empcode from studetail where id=$eid");
+    $query=mysqli_query($con,"select * from visits where empcode=$ret");
 $rowno=mysqli_num_rows($query);
 if($rowno>0){ 
   while($row = mysqli_fetch_array($query)) {?>
   <!-- CARD BEGINS -->
-<?php
+  <?php
 $visid = $row['id'];
 $query2=mysqli_query($con,"select * from expenses where visit_id=$visid");
 $rowno2=mysqli_num_rows($query2);
@@ -110,11 +132,10 @@ if($rowno2>0){
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><?php echo $row['date'];?></li>
     <li class="list-group-item"><?php echo $row['assisting_faculty'];?></li>
-    <li class="list-group-item">Total Expenses: <?php echo $amount; ?> Rs</li>
+    <li class="list-group-item">Total Expenses: <?php echo $amount;?> Rs</li>
   </ul>
   <div class="card-body">
-    <a href="editexps.php?v=<?php echo $row['id'];?>" class="card-link">Edit Visit</a>
-    <a href="myvisits.php?d=true&del=<?php echo $row['id'];?>" class="card-link" style="color: red;" >Delete Visit</a>
+    <a href="jhalak.php?v=<?php echo $row['id'];?>" class="card-link">View Visit</a>
   </div>
 </div>
 <br>
@@ -155,25 +176,25 @@ if($rowno2>0){
   
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+  <script src="../js/sb-admin-2.min.js"></script>
   <script type="text/javascript">
     $(".jDate").datepicker({
     format: 'yyyy-mm-dd',
     autoclose: true
 }).datepicker("update", "10/10/2016"); 
   </script>
-<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="js/demo/datatables-demo.js"></script>
+  <script src="../js/demo/datatables-demo.js"></script>
 </body>
 
 </html>

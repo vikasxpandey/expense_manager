@@ -45,7 +45,7 @@ if(isset($_POST['login']))
 <body class="bg-gradient-primary">
 
   <div class="container">
-      <h3 align="center" style="color: black; padding-top: 2%">Outreach Managment System</h3>
+  <a href="../index.php"><h3 align="center" style="color: black; padding-top: 2%">Outreach Managment System</h3></a>
 
     <!-- Outer Row -->
     <div class="row justify-content-center">

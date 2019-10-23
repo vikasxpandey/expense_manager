@@ -67,7 +67,7 @@ return true;
  
 
   <div class="container">
-    <h3 align="center" style="color: black; padding-top: 1%">Outreach Managment System</h3>
+  <a href="index.php"><h3 align="center" style="color: black; padding-top: 1%">Outreach Managment System</h3></a>
 
     <div class="card o-hidden border-0 shadow-lg my-5">
       <div class="card-body p-0">

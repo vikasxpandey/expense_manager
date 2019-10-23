@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2019 at 06:16 PM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.7
+-- Generation Time: Oct 23, 2019 at 07:24 AM
+-- Server version: 10.1.40-MariaDB
+-- PHP Version: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -111,19 +111,36 @@ CREATE TABLE `expenses` (
   `visit_id` int(100) NOT NULL,
   `expense` varchar(255) NOT NULL,
   `amount` int(100) NOT NULL,
-  `image` varchar(255) NOT NULL
+  `image` varchar(255) NOT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `exp_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `expenses`
 --
 
-INSERT INTO `expenses` (`id`, `visit_id`, `expense`, `amount`, `image`) VALUES
-(10, 10, 'Train', 22, '1570651006.png'),
-(15, 10, 'Bus', 40, '1570702246.png'),
-(16, 11, 'Food', 140, '1570809056.jpeg'),
-(17, 0, 'Train', 10, '1570810287.png'),
-(19, 9, 'Train', 28, '1570810426.jpeg');
+INSERT INTO `expenses` (`id`, `visit_id`, `expense`, `amount`, `image`, `status`, `exp_time`) VALUES
+(16, 11, 'Food', 140, '1570809056.jpeg', NULL, '2019-10-18 13:34:21'),
+(17, 0, 'Train', 10, '1570810287.png', NULL, '2019-10-18 13:34:21'),
+(22, 13, 'Rush', 500, '1571286311.jpg', 1, '2019-10-18 13:34:21'),
+(23, 14, 'train', 20, '1571290100.jpg', 1, '2019-10-18 13:34:21'),
+(26, 12, 'train', 152, '1571384447.jpg', NULL, '2019-10-18 13:34:21'),
+(27, 9, 'Train', 30, '1571384928.png', NULL, '2019-10-18 13:34:21'),
+(28, 9, 'Auto', 20, '1571384967.png', 1, '2019-10-18 13:34:21'),
+(29, 9, 'Bus', 12, '1571385056.png', 1, '2019-10-18 13:34:21'),
+(30, 15, 'Auto', 15, '1571385898.png', NULL, '2019-10-18 13:34:58'),
+(31, 15, 'Train', 20, '1571385933.png', NULL, '2019-10-18 13:35:33'),
+(32, 16, 'Train', 20, '1571386713.jpg', 1, '2019-10-18 13:48:33'),
+(33, 17, 'train', 30, '1571387647.jpg', NULL, '2019-10-18 14:04:06'),
+(34, 18, 'Train', 1000, '1571388237.png', NULL, '2019-10-18 14:13:56'),
+(35, 19, 'Auto', 15, '1571388713.png', 1, '2019-10-18 14:21:52'),
+(36, 20, 'Train', 20, '1571389651.png', NULL, '2019-10-18 14:37:31'),
+(37, 20, 'Auto', 30, '1571389665.jpg', 1, '2019-10-18 14:37:45'),
+(38, 21, 'Train', 30, '1571390188.jpg', NULL, '2019-10-18 14:46:28'),
+(39, 21, 'Auto', 50, '1571390196.png', 1, '2019-10-18 14:46:36'),
+(40, 22, 'Train', 10, '1571393056.png', NULL, '2019-10-18 15:34:16'),
+(41, 22, 'Auto', 100, '1571393068.png', 1, '2019-10-18 15:34:28');
 
 -- --------------------------------------------------------
 
@@ -143,7 +160,7 @@ CREATE TABLE `studetail` (
   `EmpEmail` varchar(200) DEFAULT NULL,
   `EmpPassword` varchar(100) DEFAULT NULL,
   `EmpJoingdate` date DEFAULT NULL,
-  `PostingDate` timestamp NOT NULL DEFAULT current_timestamp()
+  `PostingDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -153,17 +170,9 @@ CREATE TABLE `studetail` (
 INSERT INTO `studetail` (`ID`, `EmpFname`, `EmpLName`, `EmpCode`, `EmpDept`, `EmpDesignation`, `EmpContactNo`, `EmpGender`, `EmpEmail`, `EmpPassword`, `EmpJoingdate`, `PostingDate`) VALUES
 (1, 'Subhash', 'Pandey', '123465', 'IT', 'Software Developer', 1234567890, 'Male', 'abc@gmail.com', 'Test@12345', '2019-01-02', '2019-02-06 06:31:49'),
 (2, 'Anuj', 'Kumar', '123465558', 'CS', 'Software Developer', 1234567890, 'Male', 'anuj@gmail.com', '123', '2017-03-23', '2019-02-06 06:41:42'),
-(3, 'Ankush', 'Pandey', '123467', 'IT', 'Software Developer', 1234567890, 'Male', 'ankush@gmail.com', '89756', '2010-09-13', '2019-02-06 06:42:15'),
-(4, 'Sarita', 'Pandey', '12346012', 'IT', 'Software Developer', 1234567890, '', 'abhi@gmail.com', '156975', NULL, '2019-02-06 06:42:47'),
-(6, 'Manu', 'Ramesh', '369874', NULL, NULL, NULL, NULL, 'manu@gmail.com', '987563', NULL, '2019-02-06 12:00:50'),
-(7, 'Ragunath', 'Shahye', '63', NULL, NULL, NULL, NULL, 'shahye@gmail.com', '99999', NULL, '2019-02-08 07:22:40'),
-(8, '1345556', '', '', NULL, NULL, NULL, NULL, '', '', NULL, '2019-02-11 05:08:40'),
-(9, 'Garuv', 'Bhatia', '89745', NULL, NULL, NULL, NULL, 'jk@gmail.com', '12', NULL, '2019-02-11 05:12:28'),
-(10, 'Khusi', 'Dev', '1234', NULL, NULL, NULL, NULL, 'hjk@gmail.com', '1990', NULL, '2019-02-11 05:18:08'),
-(11, 'SARITA', 'pANDEY', '789', NULL, NULL, NULL, NULL, 'PANDEY@GMAIL.COM', '1111', NULL, '2019-02-11 08:50:55'),
-(12, 'Dinesh', 'Karthik', '56989', NULL, NULL, NULL, NULL, 'dinesh@gmail.com', '8989', NULL, '2019-02-11 12:30:50'),
-(13, 'Test', 'User', '2131231', 'IT', 'Software Developer', 1234567890, 'Male', 'testuser@gmail.com', 'Test@123', '2018-10-09', '2019-02-11 16:21:58'),
-(14, 'Harsh', 'Raval', '445566', NULL, NULL, NULL, NULL, 'johndoe@mail.com', 'johndoe', NULL, '2019-10-09 08:40:18');
+(14, 'Harsh', 'Raval', '445566', 'COMPUTERS', '', 9128324566, NULL, 'johndoe@mail.com', 'johndoe', NULL, '2019-10-09 08:40:18'),
+(17, 'Chinmay', 'Parab', '007', NULL, NULL, NULL, NULL, 'chinmayparab1999@gmail.com', '12345', NULL, '2019-10-17 02:00:19'),
+(18, 'Kinal', 'Jogani', '0070', NULL, NULL, NULL, NULL, 'kikrugang@gmail.com', '12345', NULL, '2019-10-17 04:22:44');
 
 -- --------------------------------------------------------
 
@@ -176,7 +185,7 @@ CREATE TABLE `tbladmin` (
   `AdminName` varchar(50) DEFAULT NULL,
   `AdminuserName` varchar(50) DEFAULT NULL,
   `Password` varchar(45) DEFAULT NULL,
-  `AdminRegdate` timestamp NULL DEFAULT current_timestamp()
+  `AdminRegdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -184,7 +193,8 @@ CREATE TABLE `tbladmin` (
 --
 
 INSERT INTO `tbladmin` (`ID`, `AdminName`, `AdminuserName`, `Password`, `AdminRegdate`) VALUES
-(1, 'Sarita Pandey', 'Admin', 'Test@123', '2019-02-07 16:52:45');
+(1, 'Vikas Pandey', 'Admin', 'Test@123', '2019-02-07 16:52:45'),
+(2, 'Chinmay Parab', 'chinmay.parab', 'chinmay.parab', '2019-10-16 20:28:10');
 
 -- --------------------------------------------------------
 
@@ -206,8 +216,16 @@ CREATE TABLE `visits` (
 --
 
 INSERT INTO `visits` (`id`, `empcode`, `college_visited`, `date`, `address`, `assisting_faculty`) VALUES
-(9, 445566, 'Universal College of Engineering', '2019-10-16', 'Kaman-Bhiwandi Road, Kaman, Vasai East', 'Chinmay Parab'),
-(11, 445566, 'Thadomal Sahani Engineering College', '2019-10-25', 'Lorem Nagar, Near Ipsum, Bandra West', 'Raj Shah');
+(9, 445566, 'Universal College of Engineering', '2019-10-16', 'Kaman-Bhiwandi Road, Kaman, Vasai East', 'Chinmay Raut'),
+(13, 70, 'Vartak', '2019-10-25', 'Station Rd, Behind Gurudwara, Vasai West', 'Aniket Kore'),
+(15, 445566, 'Thakur College of Engineering', '2019-11-21', 'Thakur Village, College Road, Kandivali East', 'Hezal Lopes'),
+(16, 445566, 'Thadomal Sahani College', '2019-10-17', 'Bandra East', 'Apurva Maam'),
+(17, 445566, 'IIT bombay', '2019-10-17', 'pawai', 'ravi nagar'),
+(18, 445566, 'IIT Delhi', '2019-10-22', 'Delhi', 'Hezal Maam'),
+(19, 445566, 'Vartak COLLEGE', '2019-10-25', 'Vasai West', 'Apurva Maam'),
+(20, 445566, 'Thakur college', '2019-10-18', 'B-201, Gavdevi Prasad, Goddev Naka, B.P.Road, Bhayander(East)', 'Vikas Pandey'),
+(21, 445566, 'Thakur', '2019-10-18', 'B-201, Gavdevi Prasad, Goddev Naka, B.P.Road, Bhayander(East)', 'Faculty name'),
+(22, 445566, 'Vartak college of enginneering', '2019-10-18', 'B-201, Gavdevi Prasad, Goddev Naka, B.P.Road, Bhayander(East)', 'Hezal Lopes');
 
 --
 -- Indexes for dumped tables
@@ -270,25 +288,25 @@ ALTER TABLE `empexpireince`
 -- AUTO_INCREMENT for table `expenses`
 --
 ALTER TABLE `expenses`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `studetail`
 --
 ALTER TABLE `studetail`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tbladmin`
 --
 ALTER TABLE `tbladmin`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `visits`
 --
 ALTER TABLE `visits`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

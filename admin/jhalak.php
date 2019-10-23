@@ -5,15 +5,15 @@ include('includes/dbconnection.php');
 //error_reporting(0);
 // echo '<script>alert('.$_SESSION['empcode'].$_SESSION['uid'].');</script>';
 $msg='';
-if (strlen($_SESSION['uid']==0)) {
+if (strlen($_SESSION['aid']==0)) {
   header('location:logout.php');
   } else{
 
 if(isset($_GET['d'])){
   $delid = $_GET['del'];
-  $query=mysqli_query($con,"delete from expenses where id=$delid ");
+  $query=mysqli_query($con,"UPDATE expenses set status = 1 where id=$delid ");
   if ($query) {
-    echo "<script>alert('Expense Deleted');</script>";
+    echo "<script>alert('Expense Approved');</script>";
 
   }
 }  
@@ -65,15 +65,15 @@ if(isset($_POST['add_exp']) && !empty($_FILES["file"]["name"]))
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Add Expenses</title>
+  <title>Monitor Expenses</title>
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
-  <link href="css/custom.css" rel="stylesheet">
+  <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="../css/custom.css" rel="stylesheet">
 
 </head>
 
@@ -102,30 +102,8 @@ if(isset($_POST['add_exp']) && !empty($_FILES["file"]["name"]))
           <!-- Page Heading -->
           <div class="row">
             <div class="col-md-6">
-                <h1 class="h3 mb-4 text-gray-800">Add Expenses</h1>
-                <div class="form-wrap">
-                <?php echo $msg;?>
-
-                <form action="editexps.php?v=<?php echo $_GET['v'];?>" method="post" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label for="expense">Expense Detail</label>
-                    <input type="text" name="expense" class="form-control form-control-user" required>
-                </div>
-                <div class="form-group">
-                    <label for="amount">Amount</label>
-                    <input type="number" name="amount" class="form-control form-control-user" required>
-                </div>
-                <div class="form-group">
-                    <label for="image">Receipt</label>
-                    <input type="file" style="padding:3px;" name="file" class="form-control form-control-user" required>
-                </div>
-                <button type="submit" name="add_exp" class="btn btn-primary">Add Expense</button>
-                </form>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div id="accordion" class="exp-show" >
                 <h3>Expenses</h3>
+                <div id="accordion" class="exp-show" >
                 <?php
                 $vid=$_GET['v'];
                 $query=mysqli_query($con,"select * from expenses where visit_id=$vid order by id desc;");
@@ -139,23 +117,20 @@ if(isset($_POST['add_exp']) && !empty($_FILES["file"]["name"]))
                                 <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 <?php echo $show_exp['expense'].' - '.$show_exp['amount']; ?>
                                 </button>
-                                <a href="editexps.php?v=<?php echo $show_exp['visit_id'];?>&d=true&del=<?php echo $show_exp['id']?>" style="color:red;" class="btn btn-default view-btn" >x</a>
+                                <?php if ($show_exp['status']==1) { ?>
+                                    <a style="color:green;" class="btn btn-default view-btn" >Approved</a>
+                                <?php }
+                                else { ?>
+                                    <a href="jhalak.php?v=<?php echo $show_exp['visit_id'];?>&d=true&del=<?php echo $show_exp['id']?>" style="color:green;" class="btn btn-default view-btn" >Approve</a>
+                                <?php } ?>
+                                
                             </h5>
                             </div>
 
                             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
-                                <img class="proof-img" src="uploads/<?php echo $show_exp['image'];?>" alt="">
-                                <a href="uploads/<?php echo $show_exp['image'];?>" target="_blank" class="btn btn-default view-btn" >View</a>
-                                <?php if ($show_exp['status']==1) { ?>
-                                    <a style="color:green;" class="btn btn-default view-btn" >Approved</a>
-                                <?php }
-                                elseif ($show_exp['status']==0) { ?>
-                                  <a style="color:red;" class="btn btn-default view-btn" >Approval Pending</a>
-                              <?php }
-                                else { ?>
-                                    <a style="color:yellow;" class="btn btn-default view-btn" >Approval Pending</a>
-                                <?php } ?>
+                                <img class="proof-img" src="../uploads/<?php echo $show_exp['image'];?>" alt="">
+                                <a href="../uploads/<?php echo $show_exp['image'];?>" target="_blank" class="btn btn-default view-btn" >View</a>
                             </div>
                             </div>
                         </div>
@@ -194,14 +169,14 @@ if(isset($_POST['add_exp']) && !empty($_FILES["file"]["name"]))
   
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+  <script src="../js/sb-admin-2.min.js"></script>
   <script type="text/javascript">
     $(".jDate").datepicker({
     format: 'yyyy-mm-dd',

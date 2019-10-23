@@ -114,12 +114,6 @@ while ($row=mysqli_fetch_array($ret)) {
                       <input type="text" class="form-control form-control-user" id="EmpDept" name="EmpDept" aria-describedby="emailHelp" required="true" value="<?php  echo $row['EmpDept'];?>">
                     </div></div>
                     <div class="row">
-                    <div class="col-4 mb-3">Designation</div>
-
-                    <div class="col-8 mb-3">
-                      <input type="text" class="form-control form-control-user" id="EmpDesignation" name="EmpDesignation" aria-describedby="emailHelp" required="true" value="<?php  echo $row['EmpDesignation'];?>">
-                    </div></div>
-                    <div class="row">
                       <div class="col-4 mb-3">Contact No.</div>
                     <div class="col-8 mb-3">
                       <input type="text" class="form-control form-control-user" id="EmpContactNo" name="EmpContactNo" aria-describedby="emailHelp" required="true" value="<?php  echo $row['EmpContactNo'];?>">
